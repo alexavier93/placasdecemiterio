@@ -1,0 +1,42 @@
+// Criando um novo projeto
+laravel new blog
+
+//Configurar o banco de dados
+
+//Criar as tabelas no banco
+php artisan migrate
+
+// Zera o banco 
+//php artisan migrate:fresh
+
+// criando factory
+php artisan make:factory MessageFactory --model=Message
+
+// Roda Geral
+//php artisan db:seed
+
+//Roda apenas um
+//php artisan db:seed --class=StoreTableSeeder
+
+// Instalando o Larava/UI
+composer require laravel/ui
+
+// Instalando Autentificação
+php artisan ui bootstrap --auth
+
+// Criando Controllers
+php artisan make:controller Admin\AuthController
+php artisan make:controller Admin\HomeController
+
+// Criando Controller com Resource
+php artisan make:controller Admin\UserController --resource
+
+
+
+// Resize images
+composer require intervention/image
+
+
+
+
+https://codingdriver.com/laravel-middleware-tutorial-for-auth-admin-roles.html

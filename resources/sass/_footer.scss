@@ -1,0 +1,102 @@
+#footer {
+    background-color: $primarycolor;
+    color: #fff;
+
+    h3 {
+        font-family: "Open Sans";
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .footer-about {
+        p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .social-media {
+            ul {
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: inline-block;
+                    list-style: none;
+                    margin: 0;
+                    margin-right: 8px;
+                    text-align: center;
+
+                    a {
+                        background: $secondcolor;
+                        display: inline-block;
+                        text-decoration: none;
+                        border-radius: 0.25rem;
+                        width: 35px;
+                        height: 35px;
+                        transition: all 0.5s;
+
+                        i {
+                            color: $primarycolor;
+                            font-size: 22px;
+                            line-height: 36px;
+                            margin: 0;
+                        }
+
+                        &:hover {
+                            color: #7eabca;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .contact {
+        ul {
+            padding: 0;
+            margin: 0;
+
+            li {
+                list-style: none;
+                margin-bottom: 6px;
+
+                i {
+                    width: 20px;
+                }
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+                
+            }
+        }
+    }
+
+    .menu {
+        ul {
+            padding: 0;
+            margin: 0;
+
+            li {
+                list-style: none;
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.copy-right {
+    background-color: #2d3e57;
+    padding: 15px 0;
+
+    p {
+        margin: 0;
+        color: #fff;
+    }
+}

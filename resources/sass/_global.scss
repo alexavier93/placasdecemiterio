@@ -1,0 +1,70 @@
+.title-section {
+    span {
+        font-size: 24px;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        color: $secondcolor;
+        display: block;
+        margin-bottom: 15px;
+        text-transform: capitalize;
+    }
+
+    h2 {
+        font-size: 40px;
+        font-family: "Montserrat", sans-serif;
+        color: $primarycolor;
+        margin-bottom: 20px;
+        font-weight: 700;
+        position: relative;
+        display: block;
+    }
+}
+
+.title-section-center {
+    max-width: 660px;
+    margin: -8px auto 60px;
+    text-align: center;
+    position: relative;
+}
+
+.page-title-content {
+    color: $primarycolor;
+    font-size: 40px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    padding: 35px 0;
+
+    h1 {
+        font-weight: 600;
+    }
+
+    h5 {
+        color: #666;
+        font-size: 15px;
+
+        a {
+            color: $primarycolor;
+        }
+
+        span {
+            font-size: 12px;
+            margin: 0 6px;
+        }
+    }
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+}
+
+.absolute-middle-center {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+}

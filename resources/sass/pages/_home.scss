@@ -1,0 +1,276 @@
+#home {
+
+    /*
+    Banner
+    ======================================================*/
+
+	.banner-carousel {
+		position: relative;
+
+		.slide-item {
+			position: relative;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			height: 500px;
+		}
+
+		.content-box {
+			position: relative;
+			text-align: left;
+
+			h2 {
+				background: rgba(0, 0, 0, 50%);
+				width: 50%;
+				display: block;
+				font-size: 60px;
+				font-family: "Barlow", sans-serif;
+				font-weight: 800;
+				line-height: 1.2em;
+				color: #ffffff;
+				margin-bottom: 30px;
+				padding: 10px;
+				opacity: 0;
+				-webkit-transform: translateY(100px);
+				-moz-transform: translateY(100px);
+				-ms-transform: translateY(100px);
+				-o-transform: translateY(100px);
+				transform: translateY(100px);
+				-webkit-transition: all 500ms ease;
+				-moz-transition: all 500ms ease;
+				-ms-transition: all 500ms ease;
+				-o-transition: all 500ms ease;
+				transition: all 500ms ease;
+			}
+
+			.descricao {
+				background: rgba(0, 0, 0, 50%);
+				width: 50%;
+				display: block;
+				font-size: 14px;
+				letter-spacing: 1px;
+				color: #fff;
+				font-weight: 500;
+				margin-bottom: 45px;
+				padding: 10px;
+				opacity: 0;
+				-webkit-transform: translateY(100px);
+				-moz-transform: translateY(100px);
+				-ms-transform: translateY(100px);
+				-o-transform: translateY(100px);
+				transform: translateY(100px);
+				-webkit-transition: all 500ms ease;
+				-moz-transition: all 500ms ease;
+				-ms-transition: all 500ms ease;
+				-o-transition: all 500ms ease;
+				transition: all 500ms ease;
+			}
+
+			.btn-box {
+				display: inline-block;
+				text-decoration: none;
+				-webkit-transform: translateY(100px);
+				-moz-transform: translateY(100px);
+				-ms-transform: translateY(100px);
+				-o-transform: translateY(100px);
+				transform: translateY(100px);
+				-webkit-transition: all 500ms ease;
+				-moz-transition: all 500ms ease;
+				-ms-transition: all 500ms ease;
+				-o-transition: all 500ms ease;
+				transition: all 500ms ease;
+
+				a {
+					background: #b11116;
+					border-radius: 2px;
+					font-size: 14px;
+					color: #fff;
+					padding: 16px 20px;
+					text-decoration: none;
+				}
+			}
+		}
+
+		.active {
+			.content-box {
+				.title {
+					opacity: 1;
+					-webkit-transform: translateY(0);
+					-moz-transform: translateY(0);
+					-ms-transform: translateY(0);
+					-o-transform: translateY(0);
+					transform: translateY(0);
+				}
+
+				h2 {
+					opacity: 1;
+					-webkit-transform: translateY(0);
+					-moz-transform: translateY(0);
+					-ms-transform: translateY(0);
+					-o-transform: translateY(0);
+					transform: translateY(0);
+					-webkit-transition-delay: 300ms;
+					-moz-transition-delay: 300ms;
+					-ms-transition-delay: 300ms;
+					-o-transition-delay: 300ms;
+					transition-delay: 300ms;
+				}
+
+				.descricao {
+					opacity: 1;
+					-webkit-transform: translateY(0);
+					-moz-transform: translateY(0);
+					-ms-transform: translateY(0);
+					-o-transform: translateY(0);
+					transform: translateY(0);
+					-webkit-transition-delay: 600ms;
+					-moz-transition-delay: 600ms;
+					-ms-transition-delay: 600ms;
+					-o-transition-delay: 600ms;
+					transition-delay: 600ms;
+				}
+
+				.btn-box {
+					opacity: 1;
+					-webkit-transform: translateY(0);
+					-moz-transform: translateY(0);
+					-ms-transform: translateY(0);
+					-o-transform: translateY(0);
+					transform: translateY(0);
+					-webkit-transition-delay: 900ms;
+					-moz-transition-delay: 900ms;
+					-ms-transition-delay: 900ms;
+					-o-transition-delay: 900ms;
+					transition-delay: 900ms;
+				}
+			}
+		}
+
+		.owl-nav {
+			position: absolute;
+			left: 0;
+			top: 40%;
+			width: 100%;
+		}
+
+		.owl-next,
+		.owl-prev {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100px;
+			width: 30px;
+			background-color: rgba(255, 255, 255, 0.9);
+			color: #222222;
+			font-size: 20px;
+			line-height: 100px;
+			text-align: center;
+			-webkit-transition: all 500ms ease;
+			-moz-transition: all 500ms ease;
+			-ms-transition: all 500ms ease;
+			-o-transition: all 500ms ease;
+			transition: all 500ms ease;
+		}
+
+		.owl-next {
+			left: auto;
+			right: 0;
+		}
+
+		.owl-next:hover,
+		.owl-prev:hover {
+			background-color: rgba(255, 255, 255, 0.9);
+			color: #222222;
+		}
+	}
+
+    /*
+About us Style
+======================================================*/
+    .about-us {
+    }
+
+    /*
+How to do Style
+======================================================*/
+    .how-todo {
+        .video-section {
+            .video-box-button-holder {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                text-align: center;
+                z-index: 44;
+
+                &:hover .icon-play {
+                    width: 180px;
+                }
+                .icon-play {
+                    width: 160px;
+                    -webkit-transition: 0.3s ease;
+                    -o-transition: 0.3s ease;
+                    transition: 0.3s ease;
+                }
+            }
+        }
+    }
+
+    /*
+Steps Style
+======================================================*/
+    .steps {
+        background-color: #efefef;
+
+        .info {
+            .item {
+                img {
+                    height: 70px;
+                }
+
+                h5 {
+                    color: $secondcolor;
+                    font-size: 18px;
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 500;
+                    line-height: 1.2;
+                    margin-top: 20px;
+                }
+            }
+        }
+
+        .btn-more {
+            background-color: $primarycolor;
+            border-radius: 50px;
+            color: #fff !important;
+            font-size: 20px;
+            font-family: "Rubik", sans-serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            padding: 10px 25px;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: $secondcolor;
+            }
+        }
+    }
+
+    /*
+personalizados Style
+======================================================*/
+    .personalizados {
+        .btn-whatsapp {
+            background-color: #169552;
+            color: #ffffff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 26px;
+            font-family: "Rubik", sans-serif;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: #188049;
+            }
+        }
+    }
+}
