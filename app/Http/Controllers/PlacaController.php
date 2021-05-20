@@ -38,7 +38,7 @@ class PlacaController extends Controller
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            $image = $request->file('image')->store('tmp_placas', 'public');
+            $image = $request->file('image')->store('images_orders', 'public');
             $nameImg = $image;
             $image = Image::make(public_path("storage/{$image}"));
             $image->save();
@@ -182,7 +182,7 @@ class PlacaController extends Controller
     public function uploadCropImage(Request $request)
     {
 
-        $folderPath = public_path('storage/tmp_placas/');
+        $folderPath = public_path('storage/images_orders/');
 
         $image_parts = explode(";base64,", $request->image);
         $image_type_aux = explode("image/", $image_parts[0]);
@@ -197,7 +197,7 @@ class PlacaController extends Controller
 
         file_put_contents($imageFullPath, $image_base64);
 
-        $imageCrop = 'tmp_placas/' . $imageName;
+        $imageCrop = 'images_orders/' . $imageName;
         $imageCropped = asset('storage/' . $imageCrop);
 
         return response()->json(['msgSuccess' => 'Imagem recortada com sucesso!', 'imageCrop' => $imageCrop, 'imageCropped' => $imageCropped]);

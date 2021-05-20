@@ -69,7 +69,7 @@ class PlacaController extends Controller
         $data['image'] = $image;
 
         // Redimensionando a imagem
-        $image = Image::make(public_path("storage/{$image}"))->fit(500, 350);
+        $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
         $image->save();
 
         $placa = $this->placa->create($data);
@@ -128,7 +128,7 @@ class PlacaController extends Controller
             $data['image'] = $image;
 
             // Redimensionando a imagem
-            $image = Image::make(public_path("storage/{$image}"))->fit(500, 350);
+            $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
             $image->save();
         }
 

@@ -19,6 +19,7 @@ class Order extends Model
         'address_id',
         'code',
         'total',
+        'tracking_code',
         'status',
     ];
 

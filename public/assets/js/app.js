@@ -1193,7 +1193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // MERCADO PAGO
 var valorTotal = $('#valorTotal').val();
-var mp = new MercadoPago('APP_USR-06c0a620-d3e8-48f9-9b36-3065f09da82f', {
+var mp = new MercadoPago('TEST-5abd76b4-bdd0-482e-86f8-5db725e298fc', {
   locale: 'pt-BR'
 });
 var cardForm = mp.cardForm({

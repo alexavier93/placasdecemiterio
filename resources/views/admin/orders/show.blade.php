@@ -22,6 +22,40 @@
     <!-- Content Row -->
     <div class="row">
 
+        <div class="col-sm-12 col-lg-12 col-xl-12 mb-4">
+            <button class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalTrakingCode"><i class="fas fa-plus-circle"></i> Código de
+                Rastreamento</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalTrakingCode" tabindex="-1" aria-labelledby="modalTrakingCodeLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTrakingCodeLabel">Inserir Código de Rastreio</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="progressInsert" action="{{ route('admin.orders.insertTrackingCode') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                <div class="form-group">
+                                    <label>Código</label>
+                                    <input type="text" class="form-control" name="tracking_number">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" form="progressInsert" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Content Column -->
         <div class="col-sm-12 col-lg-4 col-xl-4 mb-4">
             <div class="card shadow mb-4">
@@ -57,7 +91,37 @@
                         <li class="list-group-item"><i class="fas fa-shipping-fast"></i>
                             {{ $envio->tipo . ', ' . $envio->prazo . ' dias' }}
                         </li>
-                        <li class="list-group-item"><i class="fas fa-credit-card"></i> Método do pagamento</li>
+
+                        @if($envio->tracking_number)
+                        <li class="list-group-item">
+                            <i class="fas fa-barcode"></i> {{ $envio->tracking_number }}
+                        </li>
+                        @endif
+
+                        @isset($paymentCreditCard)
+                            <li class="list-group-item">
+                                <i class="fas fa-credit-card"></i>
+                                Forma de Pagamento: Cartão de Crédito<br>
+                                Valor: {{ $paymentCreditCard->installments }}x R$
+                                {{ number_format($paymentCreditCard->installment_amount, 2, ',', '') }}
+                            </li>
+                        @endisset
+
+                        @isset($paymentBoleto)
+                            <li class="list-group-item">
+                                <i class="fas fa-credit-card"></i>
+                                Forma de Pagamento: Boleto<br>
+                                Valor: R$ {{ number_format($paymentBoleto->total_paid_amount, 2, ',', '') }}
+                            </li>
+                        @endisset
+
+                        @isset($paymentPix)
+                            <li class="list-group-item">
+                                <i class="fas fa-credit-card"></i>
+                                Forma de Pagamento: Pix<br>
+                                Valor: R$ {{ number_format($paymentPix->total_paid_amount, 2, ',', '') }}
+                            </li>
+                        @endisset
                     </ul>
 
                 </div>
@@ -79,7 +143,7 @@
                             {{ $customer->firstname . ' ' . $customer->lastname }}
                         </li>
                         <li class="list-group-item"><i class="fas fa-map-marker-alt"></i>
-                            {{ $address->logradouro . ', ' . $address->numero . ' - ' .  $address->complemento }}<br>
+                            {{ $address->logradouro . ', ' . $address->numero . ' - ' . $address->complemento }}<br>
                             {{ $address->bairro . ' - ' . $address->cidade . ' - ' . $address->uf }}
                         </li>
                     </ul>
@@ -110,6 +174,15 @@
                                         <h6 class="my-0"><b>{{ $placa->title }}</b></h6>
 
                                         <small class="text-muted">
+                                            @foreach ($fundos as $fundo)
+                                                @if ($fundo->id == $produto->fundo_id)
+                                                    <b>Fundo:</b> {{ $fundo->title }}
+                                                @endif
+                                            @endforeach
+                                        </small>
+                                        <br>
+
+                                        <small class="text-muted">
                                             @foreach ($modelos as $modelo)
                                                 @if ($modelo->id == $produto->modelo_id)
                                                     <b>Modelo:</b> {{ $modelo->title }}
@@ -117,6 +190,8 @@
                                             @endforeach
                                         </small>
                                         <br>
+
+
                                         <small class="text-muted">
                                             @foreach ($molduras as $moldura)
                                                 @if ($moldura->id == $produto->moldura_id)
@@ -125,6 +200,16 @@
                                             @endforeach
                                         </small>
                                         <br>
+
+                                        <small class="text-muted">
+                                            @foreach ($fontes as $fonte)
+                                                @if ($fonte->id == $produto->fonte_id)
+                                                    <b>Fonte:</b> {{ $fonte->title }}
+                                                @endif
+                                            @endforeach
+                                        </small>
+                                        <br><br>
+
                                         <small class="text-muted">
                                             <b>Nome:</b> {{ $produto->name }}
                                         </small>
@@ -141,11 +226,20 @@
                                             <small class="text-muted">
                                                 <b>Frase:</b> {{ $produto->phrase }}
                                             </small>
+
+                                        @endif
+                                        @if ($produto->observation != '')
+                                            <br>
+                                            <small class="text-muted">
+                                                <b>Observação:</b> {{ $produto->observation }}
+                                            </small>
                                         @endif
                                         <br>
                                         <small class="text-muted">
-                                            <a href="{{ asset('storage/' . $produto->image) }}" download> Imagem Original <i  class="fas fa-download"></i></a><br>
-                                            <a href="{{ asset('storage/' . $produto->image_crop) }}" download> Imagem Cortada <i class="fas fa-download"></i></a>
+                                            <a href="{{ asset('storage/' . $produto->image) }}" download> Imagem Original
+                                                <i class="fas fa-download"></i></a><br>
+                                            <a href="{{ asset('storage/' . $produto->image_crop) }}" download> Imagem
+                                                Cortada <i class="fas fa-download"></i></a>
                                         </small>
                                     </div>
 

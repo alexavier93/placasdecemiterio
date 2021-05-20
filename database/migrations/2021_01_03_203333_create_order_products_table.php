@@ -26,12 +26,13 @@ class CreateOrderProductsTable extends Migration
             $table->char('birthdate', 15);
             $table->char('deathdate', 15);
             $table->string('phrase', 255)->nullable();
+            $table->string('observation', 255)->nullable();
             $table->string('image', 150);
             $table->string('image_crop', 150);
             $table->decimal('price', 10, 2);
             $table->timestamps();
 
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('set null');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('placa_id')->references('id')->on('placas')->onDelete('set null');
             $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('set null');
             $table->foreign('moldura_id')->references('id')->on('molduras')->onDelete('set null');

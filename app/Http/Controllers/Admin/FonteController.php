@@ -53,7 +53,7 @@ class FonteController extends Controller
         $data['image'] = $image;
 
         // Redimensionando a imagem
-        $image = Image::make(public_path("storage/{$image}"))->fit(600, 260);
+        $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
         $image->save();
 
         $this->fonte->create($data);
@@ -99,7 +99,7 @@ class FonteController extends Controller
             $data['image'] = $image;
 
             // Redimensionando a imagem
-            $image = Image::make(public_path("storage/{$image}"))->fit(600, 260);
+            $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
             $image->save();
         }
 

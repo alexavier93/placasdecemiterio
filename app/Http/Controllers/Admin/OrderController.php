@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Fonte;
+use App\Models\Fundo;
 use App\Models\Modelo;
 use App\Models\Moldura;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\OrderShipment;
+use App\Models\PaymentBoleto;
+use App\Models\PaymentCreditcard;
+use App\Models\PaymentPix;
 use App\Models\Placa;
 use Illuminate\Http\Request;
 
@@ -50,8 +55,10 @@ class OrderController extends Controller
         $order->customer_id;
 
         $placas = Placa::all();
-        $molduras = Moldura::all();
         $modelos = Modelo::all();
+        $molduras = Moldura::all();
+        $fundos = Fundo::all();
+        $fontes = Fonte::all();
 
         $customer = Customer::find($order->customer_id);
         $address = $customer->address()->first();
@@ -60,7 +67,13 @@ class OrderController extends Controller
 
         $envio = OrderShipment::where('order_id', $order->id)->first();
 
-        return view('admin.orders.show', compact('order', 'customer', 'address', 'produtos', 'envio', 'placas', 'molduras', 'modelos'));
+        $orderPayment = $order->order_payment()->first();
+
+        $paymentCreditCard = PaymentCreditcard::where('order_payment_id', $orderPayment->id)->first();
+        $paymentBoleto = PaymentBoleto::where('order_payment_id', $orderPayment->id)->first();
+        $paymentPix = PaymentPix::where('order_payment_id', $orderPayment->id)->first();
+
+        return view('admin.orders.show', compact('order', 'customer', 'address', 'produtos', 'envio', 'placas', 'molduras', 'modelos', 'fundos', 'fontes', 'paymentCreditCard', 'paymentBoleto', 'paymentPix'));
 
     }
 
@@ -92,6 +105,18 @@ class OrderController extends Controller
 
     }
 
+
+    public function insertTrackingCode(Request $request)
+    {
+
+        $orderShipment = OrderShipment::where('order_id', $request->order_id)->update(['tracking_number' => $request->tracking_number]);
+
+        if ($orderShipment) {
+            flash('Upload realizado com sucesso!')->success();
+            return redirect()->route('admin.orders.show', ['order' => $request->order_id]);
+        }
+
+    }
 
     public function orderby(Request $request)
     {

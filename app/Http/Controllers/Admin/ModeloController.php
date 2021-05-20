@@ -53,7 +53,7 @@ class ModeloController extends Controller
         $data['image'] = $image;
 
         // Redimensionando a imagem
-        $image = Image::make(public_path("storage/{$image}"))->fit(500, 350);
+        $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
         $image->save();
 
         $this->modelo->create($data);
@@ -97,7 +97,7 @@ class ModeloController extends Controller
             $data['image'] = $image;
 
             // Redimensionando a imagem
-            $image = Image::make(public_path("storage/{$image}"))->fit(500, 350);
+            $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
             $image->save();
         }
 

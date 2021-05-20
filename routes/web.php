@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/orderby', [CustomerController::class, 'orderby'])->name('orderby');
         });
 
+        
+
 
         // PLACAS
         Route::prefix('placas')->name('placas.')->group(function(){
@@ -120,6 +122,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/show/{order}', [OrderController::class, 'show'])->name('show');
             Route::post('/delete', [OrderController::class, 'delete'])->name('delete');
             Route::get('/orderby', [OrderController::class, 'orderby'])->name('orderby');
+            Route::post('/insertTrackingCode', [OrderController::class, 'insertTrackingCode'])->name('insertTrackingCode');
         });
 
 
@@ -165,6 +168,7 @@ Route::prefix('checkout')->name('checkout.')->group(function(){
 
 Route::prefix('payment')->name('payment.')->group(function(){
     Route::get('/mercadopago', [App\Http\Controllers\PaymentController::class, 'mercadopago'])->name('mercadopago');
+    Route::get('/mercadopago/otherpayments', [App\Http\Controllers\PaymentController::class, 'otherpayments'])->name('otherpayments');
     Route::get('/order/{code}', [App\Http\Controllers\PaymentController::class, 'order'])->name('order');
     Route::post('/createOrder', [App\Http\Controllers\PaymentController::class, 'createOrder'])->name('createOrder');
     

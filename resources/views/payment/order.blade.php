@@ -9,8 +9,46 @@
         <div class="container">
 
             <div class="page-title-content">
-                <h1>Pedido Confirmado</h1>
-                <h5><a href="{{ route('home') }}">Home</a> <span>/</span> Detalhes do Pedido</h5>
+                <h1>Pedido Finalizado</h1>
+                <h3>SEU PEDIDO FOI REALIZADO COM SUCESSO</h3>
+                <p>Seu pedido é: <b class="h4">{{ $order->code }}</b></p>
+            </div>
+
+            <div class="col-md-12 text-center mb-4">
+                <div class="info-payment">
+
+                    @isset($paymentCreditCard)
+                    <p>Forma de Pagamento: <br>Cartão de Crédito</p>
+                    <p>Valor: {{ $paymentCreditCard->installments }}x R$ {{ number_format($paymentCreditCard->installment_amount, 2, ',', '') }}</p>
+
+                    @endisset
+
+                    @isset($paymentBoleto)
+
+                    <p>Forma de Pagamento: Boleto</p>
+                    <p>Valor: R$ {{ number_format($paymentBoleto->total_paid_amount, 2, ',', '') }}</p>
+                    <p><b><a href="{{ $paymentBoleto->external_resource_url }}" target="_blank" download>Clique aqui para baixar o PDF</a></b></p>
+
+                    @endisset
+
+                    @isset($paymentPix)
+
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <p>Forma de Pagamento: Pix</p>
+                                <p>Valor: R$ {{ number_format($paymentPix->total_paid_amount, 2, ',', '') }}</p>
+                                <p>
+                                    Para fazer o pagamento basta escanear o QR Code, o código é válido por apenas por 24h. Para fazer o download do QR Code é só clicar na imagem.<br>
+                                    <a href="data:image/jpeg;base64,{{ $paymentPix->qr_code_base64 }}" download="Pix_Pedido_{{ $order->code }}"><img style="width: 200px" src="data:image/jpeg;base64,{{ $paymentPix->qr_code_base64 }}" /></a>
+                                </p>
+                            </div>
+                        </div>
+                            
+                    @endisset
+
+                </div>
+
+                <p>Você receberá uma cópia com detalhes do seu pedido por e-mail.</p>
             </div>
 
             <div class="shipment">
@@ -19,10 +57,6 @@
 
                     <div class="col-md-12">
                         @include('flash::message')
-                    </div>
-
-                    <div class="col-md-12">
-                        <h3>Pedido <small class="text-muted"><b>{{ $order->code }}</b></small></h3>
                     </div>
 
                     <div class="col-md-5 col-sm-12">

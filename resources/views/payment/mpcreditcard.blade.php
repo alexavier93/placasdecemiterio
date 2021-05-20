@@ -23,7 +23,7 @@
                         <div class="alert alert-warning" role="alert" style="display: none;"></div>
                     </div>
 
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-7 col-sm-12">
 
                         <div class="card mb-3">
                             <div class="card-header">Selecione uma forma de pagamento</div>
@@ -60,12 +60,13 @@
                                             <div class="col-md-7 mb-3">
                                                 <label for="cardNumber">Número do cartão</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control number" name="cardNumber" id="form-checkout__cardNumber" maxlength="16"/>
-                                                    <span class="input-group-text issuer_card">
-                                                        <img src="{{ asset('assets/images/credit-card.svg') }}" style="width: 32px;">
-                                                    </span>
+                                                    <input type="text" class="form-control number" name="cardNumber" id="form-checkout__cardNumber" maxlength="16" />
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">
+                                                            <img src="{{ asset('assets/images/credit-card.svg') }}" style="width: 32px;">
+                                                        </span> 
+                                                    </div>
                                                 </div>
-                                                  
                                             </div>
                                     
                                             <div class="col-md-5 mb-3">
@@ -86,17 +87,17 @@
                                                 <input class="form-control number" type="text" name="securityCode" id="form-checkout__securityCode" maxlength="3"/>
                                             </div>
                                     
-                                            <div class="col-md-3 mb-3">
+                                            <div class="col-md-4 mb-3">
                                                 <label for="form-checkout__identificationType">Tipo de documento</label>
                                                 <select class="form-control" name="identificationType" id="form-checkout__identificationType"></select>
                                             </div>
                                     
                                             <div class="col-md-4 mb-3">
                                                 <label>Número do documento</label>
-                                                <input class="form-control" type="text" name="identificationNumber" id="form-checkout__identificationNumber" />
+                                                <input class="form-control" type="text" name="identificationNumber" id="form-checkout__identificationNumber" maxlength="14" />
                                             </div>
                                     
-                                            <div class="col-md-5 mb-3">
+                                            <div class="col-md-4 mb-3">
                                                 <label for="installments">Parcelas</label>
                                                 <select class="form-control" name="installments" id="form-checkout__installments"></select>
                                             </div>
@@ -117,7 +118,7 @@
 
                     </div>
 
-                    <div class="col-md-6 col-sm-12 mt-4 mt-md-0">
+                    <div class="col-md-5 col-sm-12 mt-4 mt-md-0">
 
                         <div class="card">
 
@@ -170,6 +171,7 @@
                                 <div class="d-flex justify-content-between">
                                     <span>Total</span>
                                     <strong>R$ {{ number_format($pedido_total, 2, ',', '') }}</strong>
+                                    <input type="hidden" id="valorTotal" value="{{ number_format($pedido_total, 2) }}">
                                 </div>
 
                             </div>

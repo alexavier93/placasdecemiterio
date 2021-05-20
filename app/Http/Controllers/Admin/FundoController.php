@@ -53,7 +53,7 @@ class FundoController extends Controller
         $data['image'] = $image;
 
         // Redimensionando a imagem
-        $image = Image::make(public_path("storage/{$image}"))->fit(300, 300);
+        $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
         $image->save();
 
         $this->fundo->create($data);
@@ -99,7 +99,7 @@ class FundoController extends Controller
             $data['image'] = $image;
 
             // Redimensionando a imagem
-            $image = Image::make(public_path("storage/{$image}"))->fit(300, 300);
+            $image = Image::make(public_path("storage/{$image}"))->fit(800, 347);
             $image->save();
         }
 

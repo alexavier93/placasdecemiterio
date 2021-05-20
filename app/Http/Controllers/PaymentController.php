@@ -10,6 +10,9 @@ use App\Models\Moldura;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\OrderShipment;
+use App\Models\PaymentBoleto;
+use App\Models\PaymentCreditcard;
+use App\Models\PaymentPix;
 use App\Models\Placa;
 use Illuminate\Http\Request;
 use MercadoPago\Payment;
@@ -75,8 +78,9 @@ class PaymentController extends Controller
                 }
 
                 $pedido_total = $price + $frete['valor'];
+                $pedido_total = number_format($pedido_total, 2);
 
-                return view('payment.mercadopago', compact('customer', 'frete', 'produtos', 'placas', 'molduras', 'modelos', 'fundos', 'fontes', 'pedido_total'));
+                return view('payment.mpotherpayment', compact('customer', 'frete', 'produtos', 'placas', 'molduras', 'modelos', 'fundos', 'fontes', 'pedido_total'));
             } else {
 
                 return redirect()->route('checkout.email');
@@ -91,8 +95,7 @@ class PaymentController extends Controller
     public function createOrder(Request $request)
     {
 
-        exit;
-
+ 
         // Gera numero do Pedido
         $codigo_pedido = rand(100000000, 999999999);
 
@@ -108,6 +111,8 @@ class PaymentController extends Controller
         $address = $customer->address()->first();
 
         $produtos = $request->session()->get('placa');
+
+        dd($produtos);
 
         $price = 0;
         foreach ($produtos as $key => $value) {
@@ -137,7 +142,7 @@ class PaymentController extends Controller
 
         // Chamando a função de pagamento
         $payment = $this->makePayment($mpData);
-
+        
         if ($payment->error == "") {
 
             // Recebendo o status 
@@ -175,6 +180,7 @@ class PaymentController extends Controller
                         'birthdate'     => $produto['birthdate'],
                         'deathdate'     => $produto['deathdate'],
                         'phrase'        => $produto['phrase'],
+                        'observation'        => $produto['observation'],
                         'image'         => $produto['image'],
                         'image_crop'    => $produto['image_crop'],
                         'price'         => $produto['price'],
@@ -246,10 +252,10 @@ class PaymentController extends Controller
                 $order->order_status()->create($order_status);
 
                 // Mata a sessão
-                $request->session()->forget('cart');
+                $request->session()->forget('placa');
 
                 if ($payment->status_detail == 'pending_waiting_payment' || $payment->status_detail == 'pending_waiting_transfer') {
-                    flash('Estamos processando o pagamento. Em até 2 dias úteis informaremos por e-mail se foi aprovado ou se precisamos de mais informações.')->warning();
+                    flash('Estaremos processando o pagamento. Em até 2 dias úteis informaremos por e-mail se foi aprovado ou se precisamos de mais informações.')->warning();
                 }
 
                 return redirect()->route('payment.order', ['code' => $codigo_pedido]);
@@ -290,7 +296,16 @@ class PaymentController extends Controller
 
         $envio = OrderShipment::where('order_id', $order->id)->first();
 
-        return view('payment.order', compact('order', 'customer', 'address', 'produtos', 'envio', 'placas', 'molduras', 'modelos', 'fundos', 'fontes'));
+
+        $customer = Customer::find($order->customer_id);
+        $address = $customer->address()->first();
+
+        $orderPayment = $order->order_payment()->first();
+        $paymentCreditCard = PaymentCreditcard::where('order_payment_id', $orderPayment->id)->first();
+        $paymentBoleto = PaymentBoleto::where('order_payment_id', $orderPayment->id)->first();
+        $paymentPix = PaymentPix::where('order_payment_id', $orderPayment->id)->first();
+
+        return view('payment.order', compact('order', 'customer', 'address', 'produtos', 'envio', 'placas', 'molduras', 'modelos', 'fundos', 'fontes', 'paymentCreditCard', 'paymentBoleto', 'paymentPix'));
     }
 
 

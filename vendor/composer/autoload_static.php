@@ -37,7 +37,7 @@ class ComposerStaticInitb433247db5e301b3616d14fbf89909f0
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
-        '868f7b8ff9807a9ca7220d283955c57d' => __DIR__ . '/../..' . '/app/helpers/functions.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -651,6 +651,9 @@ class ComposerStaticInitb433247db5e301b3616d14fbf89909f0
         'App\\Models\\OrderProduct' => __DIR__ . '/../..' . '/app/Models/OrderProduct.php',
         'App\\Models\\OrderShipment' => __DIR__ . '/../..' . '/app/Models/OrderShipment.php',
         'App\\Models\\OrderStatus' => __DIR__ . '/../..' . '/app/Models/OrderStatus.php',
+        'App\\Models\\PaymentBoleto' => __DIR__ . '/../..' . '/app/Models/PaymentBoleto.php',
+        'App\\Models\\PaymentCreditcard' => __DIR__ . '/../..' . '/app/Models/PaymentCreditcard.php',
+        'App\\Models\\PaymentPix' => __DIR__ . '/../..' . '/app/Models/PaymentPix.php',
         'App\\Models\\Placa' => __DIR__ . '/../..' . '/app/Models/Placa.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -768,6 +771,7 @@ class ComposerStaticInitb433247db5e301b3616d14fbf89909f0
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\MessageSeeder' => __DIR__ . '/../..' . '/database/seeders/MessageSeeder.php',
+        'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

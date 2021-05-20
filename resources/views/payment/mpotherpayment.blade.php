@@ -23,7 +23,7 @@
                         <div class="alert alert-warning" role="alert" style="display: none;"></div>
                     </div>
 
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-7 col-sm-12">
 
                         <div class="card mb-3">
                             <div class="card-header">Selecione uma forma de pagamento</div>
@@ -73,7 +73,7 @@
                                     
                                         </div>
                                     
-                                        <input type="hidden" name="MPHiddenInputAmount" id="transactionAmount" value="{{ $cart['total'] }}" />
+                                        <input type="hidden" name="MPHiddenInputAmount" id="transactionAmount" value="{{ $pedido_total }}" />
                                     
                                         <div class="text-end">
                                             <button type="submit" class="btn btn-primary">Confirmar a compra</button>
@@ -89,7 +89,7 @@
 
                     </div>
 
-                    <div class="col-md-6 col-sm-12 mt-4 mt-md-0">
+                    <div class="col-md-5 col-sm-12 mt-4 mt-md-0">
 
                         <div class="card">
 
@@ -142,6 +142,7 @@
                                 <div class="d-flex justify-content-between">
                                     <span>Total</span>
                                     <strong>R$ {{ number_format($pedido_total, 2, ',', '') }}</strong>
+                                    <input type="hidden" id="valorTotal" value="{{ number_format($pedido_total, 2) }}">
                                 </div>
 
                             </div>

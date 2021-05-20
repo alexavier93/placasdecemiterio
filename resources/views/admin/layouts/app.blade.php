@@ -76,6 +76,7 @@
                         <a class="collapse-item" href="{{ route('admin.modelos.index') }}">Modelos</a>
                         <a class="collapse-item" href="{{ route('admin.molduras.index') }}">Molduras</a>
                         <a class="collapse-item" href="{{ route('admin.fundos.index') }}">Fundos</a>
+                        <a class="collapse-item" href="{{ route('admin.fontes.index') }}">Fontes</a>
                     </div>
                 </div>
             </li>

@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('address_id')->nullable();
             $table->string('code', 50);
             $table->decimal('total', 10, 2);
-            $table->string('tracking_code', 50);
+            $table->string('tracking_code', 50)->nullable();
             $table->boolean('status');
             $table->timestamps();
 

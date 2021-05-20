@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderStatus extends Model
+class PaymentPix extends Model
 {
     use HasFactory;
 
-    protected $table = 'order_status';
+    protected $table = 'payment_pix';
 
     /**
      * The attributes that are mass assignable.
@@ -17,13 +17,17 @@ class OrderStatus extends Model
      * @var array
      */
     protected $fillable = [
-        'order_id',
-        'title',
+        'order_payment_id',
+        'total_paid_amount',
+        'qr_code',
+        'qr_code_base64',
     ];
     
-    public function orders()
+    public $timestamps = false;
+
+    public function order_payment()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(OrderPayment::class);
     }
 
 }

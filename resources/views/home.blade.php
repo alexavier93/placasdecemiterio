@@ -38,17 +38,11 @@
                         <div class="about-content">
 
                             <div class="title-section">
-                                <span>Quem Somos</span>
-                                <h2>Lorem ipsum dolor sit amet consectetur </h2>
+                                <span></span>
+                                <h2>Quem Somos</h2>
                             </div>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Quis</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus aliqua
-                                suspendris.
-                            </p>
+                            <p>Somos a empresa pioneira na tecnologia de Impressão em Vidro no Brasil. A SPAL é a marca final de uma caminhada de mais de 30 anos no ramo da Vidraçaria. A impressão em vidro sempre foi um sonho um pouco distante... Sonhamos, pesquisamos, buscamos e é com muito orgulho que hoje podemos dizer que conquistamos este sonho! Hoje somos a empresa que traz para o Brasil um produto exclusivo, de qualidade ímpar e capaz de perdurar sua homenagem por várias gerações.   </p>
 
                         </div>
 
@@ -66,8 +60,8 @@
             <div class="container">
 
                 <div class="title-section title-section-center">
-                    <span>Como fazer</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur </h2>
+                    <span></span>
+                    <h2>Como Funciona?</h2>
                 </div>
 
                 <div class="video-section col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 text-center">
